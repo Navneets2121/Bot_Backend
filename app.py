@@ -319,7 +319,7 @@ def home():
 
 @app.route('/bot', methods=['GET'])
 def get_bot_response():
-    userText = request.args.get('msg',timeout=15)
+    userText = request.args.get('msg')
     result=bot(userText)
     return jsonify(result)
 
