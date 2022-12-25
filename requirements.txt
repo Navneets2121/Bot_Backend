@@ -43,7 +43,6 @@ rsa==4.9
 six==1.16.0
 soupsieve==2.3.2.post1
 tensorflow==2.11.0
-tensorflow-io-gcs-filesystem==0.29.0
 termcolor==2.1.1
 tqdm==4.64.1
 typing_extensions==4.4.0
