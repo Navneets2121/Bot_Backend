@@ -29,7 +29,8 @@ from keras.models import Sequential
 from keras.layers import Dense,Activation, Dropout
 from keras.optimizers import SGD
 import random
-
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 nltk.download('popular')
 import datetime # library for date and time
