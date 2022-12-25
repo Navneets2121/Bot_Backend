@@ -19,7 +19,7 @@ newsapi-python==0.2.6
 nltk==3.7
 numpy==1.21.6
 Pillow==9.3.0
-protobuf==4.21.11
+protobuf==3.19.6
 psutil==5.9.4
 PyAutoGUI==0.9.53
 pycountry==22.3.5
