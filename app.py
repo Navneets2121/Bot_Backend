@@ -202,109 +202,109 @@ def cpu():
   return usage
 
 def bot(msg):
-inp = msg.lower()
-# query = LemNormalize(inp)
-ints = predict_class(inp, model)
-List = getResponse(ints, intents)[0]
-tag=getResponse(ints, intents)[1]
-flag = True
-# operations
-if 'goodbye' in tag:
-  return (List)
+    inp = msg.lower()
+    # query = LemNormalize(inp)
+    ints = predict_class(inp, model)
+    List = getResponse(ints, intents)[0]
+    tag=getResponse(ints, intents)[1]
+    flag = True
+    # operations
+    if 'goodbye' in tag:
+      return (List)
 
-if 'time' in tag:
-  flag = False
-  List.append(time())
+    if 'time' in tag:
+      flag = False
+      List.append(time())
 
-if 'day' in tag:
-  flag = False
-  List.append(day())
+    if 'day' in tag:
+      flag = False
+      List.append(day())
 
-if 'date' in tag:
-  flag = False
-  List.append(date())
+    if 'date' in tag:
+      flag = False
+      List.append(date())
 
-if 'email' in tag:
-  flag = False
-  try:
-    receiver = request.args.get('receiver')
-    subject = request.args.get('subject')
-    content = request.args.get('content')
-    sendEmail(receiver, subject, content)
-    return ("email has been sent")
-  except Exception as e:
-    return ("404")
-  continue
+    if 'email' in tag:
+      flag = False
+      try:
+        receiver = request.args.get('receiver')
+        subject = request.args.get('subject')
+        content = request.args.get('content')
+        sendEmail(receiver, subject, content)
+        return ("email has been sent")
+      except Exception as e:
+        return ("404")
+      continue
 
-if 'message' in tag:
-  flag = False
-  user_name = {
-      'vivek' : '+91 94623 28117'
-  }
-  try:
-    receiver = input("Please enter receiver's name : ")
-    name = receiver.lower()
-    phone_no = user_name[name]
-    message = input("Please enter content of the msg : ")
-    sendWhatsMsg(phone_no, message)
-    return ("message has been sent")
-  except Exception as e:
-    return (e)
-  continue
+    if 'message' in tag:
+      flag = False
+      user_name = {
+          'vivek' : '+91 94623 28117'
+      }
+      try:
+        receiver = input("Please enter receiver's name : ")
+        name = receiver.lower()
+        phone_no = user_name[name]
+        message = input("Please enter content of the msg : ")
+        sendWhatsMsg(phone_no, message)
+        return ("message has been sent")
+      except Exception as e:
+        return (e)
+      continue
 
-if 'wikipedia' in tag:
-  flag = False
-  inp = inp.replace("wikipedia", "")
-  result = wikipedia.summary(inp, sentences = 3)
-  List.append(" " + result)
+    if 'wikipedia' in tag:
+      flag = False
+      inp = inp.replace("wikipedia", "")
+      result = wikipedia.summary(inp, sentences = 3)
+      List.append(" " + result)
 
-if 'google' in tag:
-  flag = False
-  inp = inp.replace("google", "")
-  result = wikipedia.summary(inp, sentences = 2)
-  List.append(" " + result)
+    if 'google' in tag:
+      flag = False
+      inp = inp.replace("google", "")
+      result = wikipedia.summary(inp, sentences = 2)
+      List.append(" " + result)
 
-if 'weather' in tag:
-  flag = False
-  # city=input("Enter city :")
-  city = request.args.get('city')
-  url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid=24a0a5534a7ced33763b94acb9e7d058'
+    if 'weather' in tag:
+      flag = False
+      # city=input("Enter city :")
+      city = request.args.get('city')
+      url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid=24a0a5534a7ced33763b94acb9e7d058'
 
-  res = requests.get(url)
-  data = res.json()
+      res = requests.get(url)
+      data = res.json()
 
-  weather = data['weather'] [0] ['main']
-  temp = data['main']['temp']
-  temp = round((temp - 32)*5/9)
-  desp = data['weather'] [0] ['description']
-  List.append(weather)
-  List.append("The current temperature is : " + str(temp))
+      weather = data['weather'] [0] ['main']
+      temp = data['main']['temp']
+      temp = round((temp - 32)*5/9)
+      desp = data['weather'] [0] ['description']
+      List.append(weather)
+      List.append("The current temperature is : " + str(temp))
 
-if 'news' in tag:
-  flag = False
-  List.append(news())
+    if 'news' in tag:
+      flag = False
+      List.append(news())
 
-if 'joke' in tag:
-  flag = False
-  List.append(" " + pyjokes.get_joke())
+    if 'joke' in tag:
+      flag = False
+      List.append(" " + pyjokes.get_joke())
 
-if 'password' in tag:
-  flag = False
-  List.append(passwordGen())
+    if 'password' in tag:
+      flag = False
+      List.append(passwordGen())
 
-if 'flip' in tag:
-  flag = False
-  List.append(flip())
+    if 'flip' in tag:
+      flag = False
+      List.append(flip())
 
-if 'roll' in tag:
-  flag = False
-  List.append(roll())
+    if 'roll' in tag:
+      flag = False
+      List.append(roll())
 
-if 'cpu' in tag:
-  flag = False
-  List.append(cpu())
+    if 'cpu' in tag:
+      flag = False
+      List.append(cpu())
 
-return (List)
+    return (List)
 
 # if __name__ == '__main__':
 #   while(True):
