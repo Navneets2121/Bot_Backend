@@ -12,6 +12,8 @@ lemmatizer=WordNetLemmatizer()
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import json
 import pickle
 import keras
