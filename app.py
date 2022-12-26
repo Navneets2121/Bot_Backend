@@ -324,6 +324,8 @@ def get_bot_response():
     return jsonify(result)
 
 if __name__ == '__main__':
+    import socket
+    socket.setdefaulttimeout(10)
     app.run(host="0.0.0.0",)
 
 # !pip freeze > requirements.text
